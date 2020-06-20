@@ -243,12 +243,15 @@ class CycleGAN():
         #Loss function calculations
         self.loss_calc()
       
-        # Initializing the global variables
-        init = tf.global_variables_initializer()
+        # Initializing the global variablesss
         saver = tf.train.Saver()     
 
         with tf.Session() as sess:
-            sess.run(init)
+            
+            sess.run(
+                    [tf.global_variables_initializer(),
+                    tf.local_variables_initializer()] 
+                )
 
             #Read input to nd array
             self.input_read(sess)
